@@ -112,7 +112,7 @@ class VBPLeNet(nn.Module):
 
         # Sampling based loss with a single sample
         if self.sample:
-            logsoft = F.log_softmax(mu + var.sqrt() * th.rand_like(mu), 1) 
+            logsoft = F.log_softmax(mu + var.sqrt() * th.randn_like(mu), 1) 
             return -th.sum(target * logsoft, 1).mean() + KL/n_data
         else:
             # Delta method
